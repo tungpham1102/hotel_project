@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 
 # Create your models here.
+from django.urls import reverse
 
 STAR_CHOICES = (
     (1 , 1),
@@ -19,19 +20,27 @@ class Hotel(models.Model):
     address = models.CharField(max_length=100)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
-    star = models.IntegerField(max_length=1, choices=STAR_CHOICES)
+    star = models.IntegerField(choices=STAR_CHOICES)
     description = models.TextField()
     slug = models.SlugField()
 
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('hotels:hotel', kwargs={
+            'slug': self.slug
+        })
+
 
 class HotelImage(models.Model):
-    img = models.ImageField('hotels/')
+    img = models.ImageField(upload_to='static/media/imghotel/')
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return f'{self.hotel.title} - {self.featured}'
 
 
 class Booking(models.Model):
