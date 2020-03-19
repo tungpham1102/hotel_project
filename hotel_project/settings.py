@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'hotels',
+
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

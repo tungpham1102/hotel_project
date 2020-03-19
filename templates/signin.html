@@ -3,11 +3,12 @@
 		<div class="htlfndr-card-title clearfix">
 			<h2 class="pull-left">Sing in</h2>
 		</div>
-		<form id="htlfndr-sing-in-form" method="post">
-			<h4>E-mail adress</h4>
-			<input id="htlfndr-sing-in-email" class="htlfndr-input " type="text" name="htlfndr-sing-in-emal">
+		<form action= "{% url 'account_login' %}" id="htlfndr-sing-in-form" method="post">
+			{% csrf_token %}
+			<h4>Username</h4>
+			<input id="id_login" class="htlfndr-input " type="text" name="login">
 			<h4>Password</h4>
-			<input id="htlfndr-sing-in-pass" class="htlfndr-input " type="text" name="htlfndr-sing-in-pass">
+			<input id="id_password" class="htlfndr-input" type="password" name="password">
 			<div class="clearfix">
 			<span>Don't Have an Account?
 				<a data-target="#htlfndr-sing-up" data-toggle="modal" href="#">
@@ -19,3 +20,38 @@
 		</form>
 	</div>
 </div>
+
+
+
+<!--<div id="htlfndr-sing-in">-->
+<!--	<div class="htlfndr-content-card">-->
+<!--		<div class="htlfndr-card-title clearfix">-->
+<!--			<h2 class="pull-left">Sing in</h2>-->
+<!--		</div>-->
+<!--		<form action="{% url 'account_login' %}" id="htlfndr-sing-in-form" method="POST">-->
+<!--			{% csrf_token %}-->
+<!--			<div id="div_id_login"><label for="id_login"> Username<span class="asteriskField">*</span> </label>-->
+<!--				<input autofocus="autofocus" class="htlfndr-input" id="id_login" maxlength="150" name="login" placeholder="Username" required type="text">-->
+
+<!--			</div>-->
+<!--			<div id="div_id_password"><label for="id_password">Password<span class="asteriskField">*</span></label>-->
+<!--				<input autofocus="autofocus" class="htlfndr-input" id="id_password" name="password" placeholder="Password" required type="password">-->
+<!--			</div>-->
+<!--			<div class="control-group" id="div_id_remember">-->
+<!--				<div class="controls"><label class="checkbox " for="id_remember"> <input class="checkboxinput" id="id_remember" name="remember" type="checkbox">-->
+<!--					Remember Me-->
+<!--				</label></div>-->
+<!--			</div>-->
+<!--			<span>Don't Have an Account?-->
+<!--				<a data-target="#htlfndr-sing-up" data-toggle="modal" href="#">-->
+<!--					<span>Sing up</span>-->
+<!--				</a>-->
+<!--			</span>-->
+<!--			<br>-->
+<!--			<a class="btn btn-default" href="/accounts/password/reset/">Forgot Password</a>-->
+<!--			<button class="btn btn-primary pull-right" type="submit">Sign In</button>-->
+<!--		</form>-->
+<!--	</div>-->
+<!--</div>-->
+
+
