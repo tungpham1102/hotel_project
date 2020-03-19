@@ -3,23 +3,16 @@
 		<div class="htlfndr-card-title clearfix">
 			<h2 class="pull-left">Sing up</h2>
 		</div>
-		<form id="htlfndr-sing-up-form" method="post">
-			<div class="row">
-				<div class="col-md-6">
-					<h4>first name</h4>
-					<input id="htlfndr-sing-up-name" class="htlfndr-input " type="text" name="htlfndr-sing-up-name">
-				</div>
-				<div class="col-md-6">
-					<h4>last name</h4>
-					<input id="htlfndr-sing-up-last-name" class="htlfndr-input " type="text" name="htlfndr-sing-up-last-name">
-				</div>
-			</div>
+		<form action="{% url 'account_signup' %}" id="htlfndr-sing-up-form" method="post">
+			{% csrf_token %}
+					<h4>username</h4>
+					<input id="id_username" class="htlfndr-input " type="text" name="username" placeholder="Username">
 			<h4>E-mail adress</h4>
-			<input id="htlfndr-sing-up-email" class="htlfndr-input " type="text" name="htlfndr-sing-up-email">
+			<input id="id_email" class="htlfndr-input " type="text" name="email" placeholder="E-mail address">
 			<h4>Password</h4>
-			<input id="htlfndr-sing-up-pass" class="htlfndr-input " type="text" name="htlfndr-sing-up-pass">
+			<input id="id_password1" class="htlfndr-input " type="password" name="password1" placeholder="Password">
 			<h4>Confirm Password</h4>
-			<input id="htlfndr-sing-up-pass-conf" class="htlfndr-input " type="text" name="htlfndr-sing-up-pass-conf">
+			<input id="id_password2" class="htlfndr-input " type="password" name="password2" placeholder="Password (confirm)">
 			<div class="clearfix">
 			<span>Have an Account?
 				<a data-target="#htlfndr-sing-in" data-toggle="modal" href="#">
@@ -31,3 +24,24 @@
 		</form>
 	</div>
 </div>
+
+
+<!--<div>-->
+<!--		<form action="{% url 'account_signup' %}" id="htlfndr-sing-up-form" method="post">-->
+<!--		{% csrf_token %}-->
+<!--			<label for="id_username">Username<span class="asteriskField">*</span> </label>-->
+<!--			<input autofocus="autofocus" class="htlfndr-input" id="id_username" maxlength="150" minlength="1" name="username" placeholder="Username" required type="text">-->
+<!--			<label for="id_email"> E-mail (optional)</label>-->
+<!--			<input class="htlfndr-input" id="id_email" name="email" placeholder="E-mail address" type="email">-->
+<!--			<label for="id_password1">Password<span class="asteriskField">*</span> </label>-->
+<!--			<input class="htlfndr-input" id="id_password1" name="password1" placeholder="Password" required type="password">-->
+<!--			<label for="id_password2"> Password (confirm)<span class="asteriskField">*</span> </label>-->
+<!--			<input class="htlfndr-input" id="id_password2" name="password2" placeholder="Password (confirm)" required type="password">-->
+<!--			<span>Have an Account?-->
+<!--			<a data-target="#htlfndr-sing-in" data-toggle="modal" href="#">-->
+<!--				<span>Sing in</span>-->
+<!--			</a>-->
+<!--			</span>-->
+<!--			<input type="submit" value="Sing up" class="pull-right">-->
+<!--		</form>-->
+<!--	</div>-->
