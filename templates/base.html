@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+{% block title %}<title>Hotel Project</title>{% endblock title %}
+
+<!-- Bootstrap -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+<!-- Main styles -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+<!--<link rel="stylesheet/less" href="css/style.less" />-->
+<!-- IE styles -->
+<link href="{% static 'css/ie.css' %}" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+<!-- Jquery UI -->
+<link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include 'footer.html' %}
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+<!-- Include Jquery UI script file -->
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<!-- Include Query UI Touch Punch is a small hack that enables the use
+ of touch events on sites using the jQuery UI user interface library. -->
+<script src="{% static 'js/jquery.ui.touch-punch.min.js' %}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Include Starrr Rating script file for Search Widget -->
+<script src="{% static 'js/starrr.min.js' %}"></script>
+<!-- Include TinySort script file -->
+<script src="{% static 'js/tinysort.js' %}"></script>
+<!-- Include main script file -->
+<script src="{% static 'js/script.js' %}"></script>
+
+<!--<script src="js/less.min.js" ></script> -->
+</body>
+</html>

@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Home</title>{% endblock title %}
+
+{% block content %}
+<!-- Overlay preloader-->
+<div class="htlfndr-loader-overlay"></div>
+
+<div class="htlfndr-wrapper">
+
+    <!-- Start of main content -->
+    <div class="container">
+        <!-- Progress steps -->
+        <div class="htlfndr-steps">
+            <ul class="htlfndr-progress">
+                <li class="htlfndr-active-step">
+                    <span class="htlfndr-step-number">1</span> <span class="htlfndr-step-description">results</span>
+                </li>
+                <li>
+                    <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">hotel</span>
+                </li>
+                <li>
+                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">room</span>
+                </li>
+                <li>
+                    <span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">payment</span>
+                </li>
+            </ul>
+        </div><!-- .htlfndr-steps -->
+
+        <div class="row">
+
+            <main class="col-sm-12 col-md-12 col-lg-12 htlfndr-search-result htlfndr-grid-view" role="main">
+                <h2 class="htlfndr-search-result-title"><span>125</span> results found</h2>
+                <!-- Sorting navigation section -->
+                <div class="htlfndr-search-result-sorting row">
+                    <div class="col-md-12">
+
+                        <!-- Sorting elements -->
+                        <div class="dropdown htlfndr-sort">
+                            <a aria-expanded="true" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                               id="htlfndr-sort-1" role="button">
+                                Sort by
+                            </a>
+                            <ul aria-labelledby="htlfndr-sort-1" class="dropdown-menu">
+                                <li><a href="#" id="htlfndr-sort-by-price">price</a></li>
+                                <li><a href="#" id="htlfndr-sort-by-rating">rating</a></li>
+                                <li><a href="#" id="htlfndr-sort-by-popular">popular</a></li>
+                            </ul>
+                        </div><!-- .dropdown .htlfndr-sort -->
+
+                        <!-- Change number hotels to show -->
+                        <div class="dropdown htlfndr-show-number-hotels">
+                            <a aria-expanded="true" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                               id="htlfndr-sort-2" role="button">
+                                Show <span>9 items</span>
+                            </a>
+                            <ul aria-labelledby="htlfndr-sort-2" class="dropdown-menu">
+                                <li><a data-number="9" href="#" id="htlfndr-show-9">9 items</a></li>
+                                <li><a data-number="18" href="#" id="htlfndr-show-18">18 items</a></li>
+                                <li><a data-number="27" href="#" id="htlfndr-show-27">27 items</a></li>
+                            </ul>
+                        </div><!-- .dropdown .htlfndr-show-number-hotels -->
+
+                        <!-- Change view buttons -->
+                        <div class="htlfndr-view">
+                            <button class="htlfndr-active" data-placement="top" data-toggle="tooltip" id="htlfndr-grid"
+                                    role="button" title="Grid view">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <button data-placement="top" data-toggle="tooltip" id="htlfndr-row" role="button"
+                                    title="Row view">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div><!-- .htlfndr-view -->
+
+                    </div><!-- .col-md-12 -->
+                </div><!-- .htlfndr-search-result-sorting .row -->
+
+                <section class="row htlfndr-search-result-content">
+
+                    {% for hotel in object_list %}
+                    <div class="col-md-4 htlfndr-hotel-post-wrapper">
+                        <div class="htlfndr-hotel-post">
+                            <a class="htlfndr-hotel-thumbnail" href="hotel-page-v1.html">
+                                <img alt="pic" src="http://placehold.it/260x155"/>
+                            </a>
+                            <div class="htlfndr-hotel-description">
+                                <div class="htlfndr-description-content">
+                                    <h2 class="htlfndr-entry-title"><a href="hotel-page-v1.html">{{ hotel.title }}</a>
+                                    </h2>
+                                    <div class="htlfndr-rating-stars" data-rating="5">
+                                        <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                        <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                        <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                        <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                        <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                        <p class="htlfndr-hotel-reviews">(<span>188</span> reviews)</p>
+                                    </div><!-- .htlfndr-rating-stars -->
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>{{ hotel.address }}</a></h5>
+                                    <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
+                                </div><!-- .htlfndr-description-content -->
+                                <a class="htlfndr-select-hotel-button" href="hotel-page-v1.html"
+                                   role="button">select</a>
+                                <div class="htlfndr-hotel-price">
+                                    <span class="htlfndr-from">from</span> <span class="htlfndr-cost">$ {{ hotel.price }}</span> <span
+                                        class="htlfndr-per-night">per night</span>
+                                    <span class="cost">100</span>
+                                </div><!-- .htlfndr-hotel-price -->
+                            </div><!-- .htlfndr-hotel-description -->
+                        </div><!-- .htlfndr-hotel-post -->
+                    </div><!-- .col-md-4.htlfndr-hotel-post-wrapper -->
+                    {% endfor %}
+
+<!--                    -->
+<!--                                <div class="htlfndr-hotel-price"><span class="htlfndr-special">special offer</span>-->
+<!--                                    <span class="htlfndr-from">from</span> <span class="htlfndr-cost"  style="background-color: #f457a1;">$ 280</span> <span class="htlfndr-per-night">per night</span>-->
+<!--                                    <span class="cost">280</span>-->
+<!--                                </div>-->
+<!--                    -->
+<!--                    -->
+<!--                    -->
+                    <div class="col-md-4 htlfndr-hotel-post-wrapper">
+                        <div class="htlfndr-hotel-post special-offer">
+                            <a class="htlfndr-hotel-thumbnail" href="hotel-page-v4.html">
+                                <img alt="pic" src="http://placehold.it/260x155"/>
+                            </a>
+                            <div class="htlfndr-hotel-description">
+                                <div class="htlfndr-description-content">
+                                    <h2 class="htlfndr-entry-title"><a href="hotel-page-v4.html">Ruzzini Palace
+                                        Hotel</a></h2>
+                                    <div class="htlfndr-rating-stars" data-rating="3">
+                                        <i class="fa fa-star htlfndr-star-color"></i>
+                                        <i class="fa fa-star htlfndr-star-color"></i>
+                                        <i class="fa fa-star htlfndr-star-color"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <p class="htlfndr-hotel-reviews">(<span>118</span> reviews)</p>
+                                    </div><!-- .htlfndr-rating-stars -->
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san
+                                        francisco united states</a></h5>
+                                    <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
+                                </div><!-- .htlfndr-description-content -->
+                                <a class="htlfndr-select-hotel-button" href="hotel-page-v4.html"
+                                   role="button">select</a>
+                                <div class="htlfndr-hotel-price">
+                                    <span class="htlfndr-from">from</span> <span class="htlfndr-cost">$ 280</span> <span
+                                        class="htlfndr-per-night">per night</span>
+                                    <span class="cost">280</span>
+                                </div><!-- .htlfndr-hotel-price -->
+                            </div><!-- .htlfndr-hotel-description -->
+                        </div><!-- .htlfndr-hotel-post -->
+                    </div><!-- .col-md-4.htlfndr-hotel-post-wrapper -->
+                </section>
+                <!-- Pagination -->
+                <nav class="htlfndr-pagination">
+                    <ul class="pagination">
+                        <li class="htlfndr-left">
+                            <a aria-label="Previous" href="#">
+                                <span aria-hidden="true" class="fa fa-angle-left"></span>
+                            </a>
+                        </li>
+                        <li class="current"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li class="htlfndr-right">
+                            <a aria-label="Next" href="#">
+                                <span aria-hidden="true" class="fa fa-angle-right"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav><!-- .htlfndr-pagination -->
+            </main><!-- .htlfndr-search-result -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+    <!-- End of main content -->
+</div><!-- .htlfndr-wrapper -->
+
+
+<div id="htlfndr-sing-up">
+    <div class="htlfndr-content-card">
+        <div class="htlfndr-card-title clearfix">
+            <h2 class="pull-left">Sing up</h2>
+        </div>
+        <form id="htlfndr-sing-up-form" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>first name</h4>
+                    <input class="htlfndr-input " id="htlfndr-sing-up-name" name="htlfndr-sing-up-name" type="text">
+                </div>
+                <div class="col-md-6">
+                    <h4>last name</h4>
+                    <input class="htlfndr-input " id="htlfndr-sing-up-last-name" name="htlfndr-sing-up-last-name"
+                           type="text">
+                </div>
+            </div>
+            <h4>E-mail adress</h4>
+            <input class="htlfndr-input " id="htlfndr-sing-up-email" name="htlfndr-sing-up-email" type="text">
+            <h4>Password</h4>
+            <input class="htlfndr-input " id="htlfndr-sing-up-pass" name="htlfndr-sing-up-pass" type="text">
+            <h4>Confirm Password</h4>
+            <input class="htlfndr-input " id="htlfndr-sing-up-pass-conf" name="htlfndr-sing-up-pass-conf" type="text">
+            <div class="clearfix">
+					<span>Have an Account?
+				<a data-target="#htlfndr-sing-in" data-toggle="modal" href="#">
+					<span>Sing in</span>
+				</a>
+			</span>
+                <input class="pull-right" type="submit" value="Sing up">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="htlfndr-sing-in">
+    <div class="htlfndr-content-card">
+        <div class="htlfndr-card-title clearfix">
+            <h2 class="pull-left">Sing in</h2>
+        </div>
+        <form id="htlfndr-sing-in-form" method="post">
+            <h4>E-mail adress</h4>
+            <input class="htlfndr-input " id="htlfndr-sing-in-email" name="htlfndr-sing-in-emal" type="text">
+            <h4>Password</h4>
+            <input class="htlfndr-input " id="htlfndr-sing-in-pass" name="htlfndr-sing-in-pass" type="text">
+            <div class="clearfix">
+					<span>Don't Have an Account?
+				<a data-target="#htlfndr-sing-up" data-toggle="modal" href="#">
+					<span>Sing up</span>
+				</a>
+			</span>
+                <input class="pull-right" type="submit" value="Sing in">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
