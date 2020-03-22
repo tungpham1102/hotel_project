@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} <title>checkout</title>{% endblock title %}
+
+{% block content %}
+
+
+<!-- Start of main content -->
+<div class="container">
+	<!-- Progress steps -->
+	<div class="htlfndr-steps">
+		<ul class="htlfndr-progress">
+			<li><a href="{% url 'hotels:home' %}">
+				<span class="htlfndr-step-number">1</span> <span class="htlfndr-step-description">home</span></a>
+			</li>
+			<li>
+				<span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">hotel</span></a>
+			</li>
+			<li>
+				<span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">book detail</span>
+			</li>
+			<li class="htlfndr-active-step">
+				<span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">checkout</span>
+			</li>
+		</ul>
+	</div><!-- .htlfndr-steps -->
+
+	<div class="row htlfndr-payment-page">
+		<main id="htlfndr-main-content" class="col-sm-12 col-md-8 col-lg-8" role="main">
+
+<!--			<form name="myForm" onsubmit="return validateForm()" action="" method="post">-->
+<!--				{% csrf_token %}-->
+<!--				{{ form }}-->
+<!--				<input type="submit" value="submit">-->
+<!--			</form>-->
+<!--			<form name="myForm" onsubmit="return validateForm()" method="post">-->
+<!--				{% csrf_token %}-->
+<!--			  <div>-->
+<!--				<label for="first_name">Enter your first_name:</label>-->
+<!--				<input type="text" name="first_name" id="first_name">-->
+<!--			  </div>-->
+<!--			  <div>-->
+<!--				<label for="last_name">Enter your last_name:</label>-->
+<!--				<input type="text" name="last_name" id="last_name">-->
+<!--			  </div>-->
+<!--				<div>-->
+<!--				<label for="birthday">Enter your birthday:</label>-->
+<!--				<input type="date" name="birthday" id="birthday">-->
+<!--			  </div>-->
+<!--				<div>-->
+<!--				<label for="gender">Enter your gender:</label>-->
+<!--				<input type="radio" name="gender" id="gender">-->
+<!--			  </div>-->
+<!--				<div>-->
+<!--				<label for="phone">Enter your phone:</label>-->
+<!--				<input type="number" name="phone" id="phone">-->
+<!--			  </div>-->
+<!--			  <div>-->
+<!--				<input type="submit">-->
+<!--			  </div>-->
+<!--			  <div></div>-->
+<!--			</form>-->
+			<form name="myForm" onsubmit="return validateForm()" id="htlfndr-payment-form" method="post">
+				{% csrf_token %}
+				<section class="htlfndr-form-section">
+					<header>
+						<h2 class="htlfndr-form-section-title">Person Information</h2>
+						<h5 class="htlfndr-form-section-description">Please write your information carefully</h5>
+					</header>
+					<div id="htlfndr-accordion-3" class="htlfndr-form-block">
+						<div class="htlfndr-form-block-inner htlfndr-accordion-inner">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<label for="first_name" class="htlfndr-required htlfndr-top-label">First name</label>
+									<input type="text" id="first_name" name="first_name" class="htlfndr-input"
+												 placeholder="Enter first name" />
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<label for="last_name" class="htlfndr-required htlfndr-top-label">Last name</label>
+									<input type="text" id="last_name" name="last_name" class="htlfndr-input"
+												 placeholder="Enter last name" />
+								</div>
+							</div><!-- .row -->
+							<div class="row">
+								<div class="col-md-6">
+									<label for="birthday" class="htlfndr-required htlfndr-top-label">Date of birth</label>
+									<input type="date" id="birthday" name="birthday">
+								</div>
+							</div><!-- .row -->
+							<div class="row">
+								<div class="col-md-6 htlfndr-classic-radio">
+									<label class="htlfndr-required htlfndr-top-label">Gender</label>
+									<input type="radio" id="male" name="gender" value="male" />
+									<label for="male">Male</label>
+									<input type="radio" id="female" name="gender" value="female" />
+									<label for="female">Female</label>
+								</div>
+								<div class="col-md-6">
+									<label for="phone" class="htlfndr-required htlfndr-top-label">Phone number</label>
+									<input type="tel" id="phone" class="htlfndr-input" name="phone" placeholder="Enter phone number" />
+								</div>
+							</div><!-- .row -->
+						</div><!-- .htlfndr-form-block-inner -->
+					</div><!-- .htlfndr-form-block -->
+				</section><!-- .htlfndr-form-section -->
+				<input type="submit" class="htlfndr-payment-submit" value="complete booking">
+				</form>
+		</main><!-- #htlfndr-main-content -->
+
+<!--			<aside id="htlfndr-right-sidebar" class="col-sm-12 col-md-4 col-lg-offset-1 col-lg-3 htlfndr-sidebar htlfndr-sidebar-in-right" role="complementary">-->
+<!--				<div class="htlfndr-booking-details">-->
+<!--					<div class="widget">-->
+<!--						<div class="htlfndr-widget-main-content htlfndr-widget-padding">-->
+<!--							<h3 class="widget-title">booking details</h3>-->
+<!--							<div class="htlfndr-widget-block htlfndr-table-view">-->
+<!--								<div class="htlfndr-hotel-thumbnail">-->
+<!--									<a href="hotel-page-v1.html">-->
+<!--										<img src="http://placehold.it/110x75" alt="Hotel picture" />-->
+<!--									</a>-->
+<!--								</div>&lt;!&ndash; .htlfndr-hotel-logo &ndash;&gt;-->
+<!--								<div class="htlfndr-hotel-info">-->
+<!--									<a href="hotel-page-v1.html"><h3>Hilton Hotel</h3></a>-->
+<!--									<div class="htlfndr-rating-stars">-->
+<!--										<i class="fa fa-star htlfndr-star-color"></i>-->
+<!--										<i class="fa fa-star htlfndr-star-color"></i>-->
+<!--										<i class="fa fa-star htlfndr-star-color"></i>-->
+<!--										<i class="fa fa-star htlfndr-star-color"></i>-->
+<!--										<i class="fa fa-star htlfndr-star-color"></i>-->
+<!--									</div> &lt;!&ndash; .htlfndr-rating-stars &ndash;&gt;-->
+<!--									<p class="htlfndr-location">san francisco, usa</p>-->
+<!--								</div>-->
+<!--							</div>&lt;!&ndash; .htlfndr-widget-block &ndash;&gt;-->
+<!--							<div class="htlfndr-widget-block htlfndr-bigger-font">-->
+<!--								<p class="htlfndr-details"><span>1 room:</span> <a href="hotel-room-page.html"><span>King Guest Room</span></a></p>-->
+<!--								<p class="htlfndr-details"><span>check-in:</span> <span>Mon, Apr 15</span></p>-->
+<!--								<p class="htlfndr-details"><span>check-out:</span> <span>Mon, Apr 17</span></p>-->
+<!--								<p class="htlfndr-details"><span>persons:</span> <span>2</span></p>-->
+<!--							</div>&lt;!&ndash; .htlfndr-widget-block &ndash;&gt;-->
+<!--							<div class="htlfndr-widget-block htlfndr-bigger-font">-->
+<!--								<p class="htlfndr-room-cost"><span>1 night price</span> <span>$100</span></p>-->
+<!--								<p class="htlfndr-room-cost"><span>taxes & fees</span> <span>$30</span></p>-->
+<!--							</div>&lt;!&ndash; .htlfndr-widget-block &ndash;&gt;-->
+<!--							<p class="htlfndr-total-price">total price:</p>-->
+<!--							<div class="htlfndr-hotel-price">-->
+<!--								<span class="htlfndr-cost">$ 130</span>-->
+<!--							</div>&lt;!&ndash; .htlfndr-hotel-price &ndash;&gt;-->
+<!--						</div>&lt;!&ndash; .htlfndr-widget-main-content &ndash;&gt;-->
+<!--					</div>&lt;!&ndash; .widget &ndash;&gt;-->
+<!--				</div>&lt;!&ndash; .htlfndr-booking-details &ndash;&gt;-->
+<!--			</aside>&lt;!&ndash; .htlfndr-sidebar-in-right &ndash;&gt;-->
+
+	</div><!-- .row .htlfndr-payment-page-->
+</div><!-- .container -->
+<!-- End of main content -->
+
+
+{% endblock content %}
+{% block script %}
+	<script src="{% static 'js/validate.js' %}"></script>
+{% endblock script %}

@@ -44,9 +44,10 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    'hotels',
+    'crispy_forms',
+    'django_countries',
 
-    'crispy_forms'
+    'hotels',
 ]
 
 MIDDLEWARE = [

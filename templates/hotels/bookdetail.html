@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %} <title>book detail</title> {% endblock title %}
+
+{% block content %}
+
+<main>
+    {% for book_hotel in object.hotels.all %}
+    <div class="container">
+        <div class="htlfndr-steps">
+            <ul class="htlfndr-progress">
+                <li><a href="{% url 'hotels:home' %}">
+                    <span class="htlfndr-step-number">1</span> <span class="htlfndr-step-description">home</span></a>
+                </li>
+                <li><a href="{{booking_hotel.hotel.get_absolute.url}}">
+                    <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">hotel</span></a>
+                </li>
+                <li class="htlfndr-active-step">
+                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">booking detail</span>
+                </li>
+                <li>
+                    <span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">checkout</span>
+                </li>
+            </ul>
+        </div><!-- .htlfndr-steps -->
+        <div class="htlfndr-booking-details">
+
+            <div class="widget">
+
+                <div class="htlfndr-widget-main-content htlfndr-widget-padding">
+
+                    <div class="htlfndr-widget-block htlfndr-table-view">
+
+                        <div class="htlfndr-hotel-info">
+                            <a href="{{book_hotel.hotel.get_absolute_url}}"><h3>{{ book_hotel.hotel.title }}</h3></a>
+                            <div class="htlfndr-rating-stars">
+                                {% if book_hotel.hotel.star == 1%}
+                                <i class="fa fa-star htlfndr-star-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                {% elif book_hotel.hotel.star == 2%}
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                {% elif book_hotel.hotel.star == 3%}
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                {% elif book_hotel.hotel.star == 4%}
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star"></i>
+                                {% elif book_hotel.hotel.star == 5%}
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
+                                {% endif %}
+                            </div> <!-- .htlfndr-rating-stars -->
+                            <p class="htlfndr-location">{{ book_hotel.hotel.address }}</p>
+                        </div>
+                        <div class="htlfndr-hotel-thumbnail">
+                            <a href="{{book_hotel.hotel.get_absolute_url}}">
+                                {% if object.hotelimage_set.all %}
+                                {% for img in object.hotelimage_set.all %}
+                                {% if img.featured %}
+                                <img alt="Hotel logo" src="http://127.0.0.1:8000/{{img.img.url}}"
+                                     style="height:150px; width:300px;"/>
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                <img alt="Hotel logo" src="http://127.0.0.1:8000/static/media/imghotel/default.jpg" style="height:75px; width:105px;"/>
+                                {% endif %}
+                            </a>
+                        </div><!-- .htlfndr-hotel-logo -->
+
+                    </div><!-- .htlfndr-widget-block -->
+                    <p class="htlfndr-total-price">total price:</p>
+                    <div class="htlfndr-hotel-price">
+                        {% if book_hotel.hotel.discount_price %}
+                        <p class="htlfndr-room-cost"><span class="htlfndr-cost">$ {{ book_hotel.hotel.discount_price }}</span>
+                            <span> <small style="font-size: 20px;"><del>$ {{ book_hotel.hotel.price }}</del></small></span>
+                        </p>
+                        {% else %}
+                        <p class="htlfndr-room-cost"><span>$ {{ book_hotel.hotel.price }}</span></p>
+                        {% endif %}
+                    </div><!-- .htlfndr-hotel-price -->
+                    <p>if you dont want to book this hotel anymore, you can
+                        <a href="{% url 'hotels:remove-booking' book_hotel.hotel.slug %}" style="color: red;">
+                            <i class="fas fa-trash float-right">remove</i>
+                        </a>it
+                    </p>
+                </div><!-- .htlfndr-widget-main-content -->
+            </div><!-- .widget -->
+        </div><!-- .htlfndr-booking-details -->
+        <div class="widget htlfndr-widget-help">
+            <div class="htlfndr-widget-main-content htlfndr-widget-padding">
+                <h3 class="widget-title">need our help</h3>
+                <span>24/7 dedicated customer support</span>
+                <p class="htlfndr-phone">{{ book_hotel.hotel.phone }}</p>
+                <p class="htlfndr-mail">{{ book_hotel.hotel.email }}</p>
+            </div><!-- .htlfndr-widget-main-content .htlfndr-widget-padding -->
+        </div><!-- .widget .htlfndr-widget-help -->
+
+        <div>
+            <a class="btn btn-primary float-right pull-right htlfndr-book-now-button" href="{% url 'hotels:checkout' %}" style="width: 300px">Proceed to Checkout</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</main>
+
+{% endblock content %}

@@ -93,10 +93,14 @@
                         {% for img in hotel.hotelimage_set.all %}
                         {% if img.featured %}
                             <a class="htlfndr-hotel-thumbnail" href="{{ hotel.get_absolute_url }}">
-                                <img alt="pic" src=" {{ img.img.url }}" style="height:155px; width:360px"/>
+                                <img alt="pic" src="{{img.img.url}}" style="height:155px; width:360px"/>
                             </a>
                         {% endif %}
                         {% endfor %}
+                        {% else %}
+                            <a class="htlfndr-hotel-thumbnail" href="{{ hotel.get_absolute_url }}">
+                                <img alt="default" src="http://127.0.0.1:8000/static/media/imghotel/default.jpg" style="height:155px; width:360px"/>
+                            </a>
                         {% endif %}
                             <div class="htlfndr-hotel-description">
                                 <div class="htlfndr-description-content">

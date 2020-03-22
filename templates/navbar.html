@@ -27,7 +27,6 @@
                     <li>
                         <a href="{% url 'account_logout' %}"><span>log out</span></a>
                     </li>
-
                     {% else %}
                     <li id="htlfndr-singup-link">
                         <a data-target="#htlfndr-sing-up" data-toggle="modal" href="#"><span>sing up</span></a>
@@ -86,7 +85,7 @@
                         <a href="{% url 'hotels:home' %}">home</a>
                     </li>
                     <li>
-                        <a href="{{ object.get_absolute_url }}">elements</a>
+                        <a href="#">elements</a>
                     </li>
                 </ul>
             </div><!-- .collapse.navbar-collapse -->
