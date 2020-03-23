@@ -69,7 +69,7 @@ class CheckoutView(View):
                 )
                 checkout.save()
                 book.checkout = checkout
-                messages.info(self.request, 'you complete booking')
+                messages.info(self.request, 'Three credits remain in your account.')
                 book.save()
             return redirect('hotels:home')
         except ObjectDoesNotExist:
@@ -93,6 +93,8 @@ def add_booking(request, slug):
         if booking.hotels.filter(hotel__slug=hotel.slug).exists():
             book_hotel.save()
             return redirect('hotels:book-detail')
+        elif booking.hotels.exclude(hotel__slug=hotel.slug):
+            booking.hotels.remove(book_hotel)
         else:
             booking.hotels.add(book_hotel)
             return redirect('hotels:book-detail')
@@ -120,7 +122,8 @@ def remove_booking(request, slug):
                 booked = False
             )[0]
             booking.hotels.remove(book_hotel)
-            return redirect('hotels:hotel', slug=slug)
+            messages.info(request, 'Three credits remain in your account.')
+            return redirect('hotels:home')
         else:
             return redirect('hotels:hotel', slug=slug)
     else:

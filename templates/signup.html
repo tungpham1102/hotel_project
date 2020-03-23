@@ -3,7 +3,7 @@
 		<div class="htlfndr-card-title clearfix">
 			<h2 class="pull-left">Sing up</h2>
 		</div>
-		<form action="{% url 'account_signup' %}" id="htlfndr-sing-up-form" method="post">
+		<form action="{% url 'account_signup' %}" id="htlfndr-sing-up-form" method="post" data-validate-username-url="{% url 'hotels:validate_username' %}">
 			{% csrf_token %}
 					<h4>username</h4>
 					<input id="id_username" class="htlfndr-input " type="text" name="username" placeholder="Username">

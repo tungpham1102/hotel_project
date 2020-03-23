@@ -12,7 +12,7 @@
                 <li><a href="{% url 'hotels:home' %}">
                     <span class="htlfndr-step-number">1</span> <span class="htlfndr-step-description">home</span></a>
                 </li>
-                <li><a href="{{booking_hotel.hotel.get_absolute.url}}">
+                <li><a href="{% url 'hotels:hotel' book_hotel.hotel.slug %}">
                     <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">hotel</span></a>
                 </li>
                 <li class="htlfndr-active-step">
