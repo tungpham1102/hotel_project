@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title  %} <title>{{object.title}}</title>{% endblock %}
 
 
 {% block style %}
@@ -24,8 +23,11 @@
 						<span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">hotel</span>
 					</li>
 					<li>
-						<span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">payment</span>
+						<span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">book details</span>
 					</li>
+					<li>
+                    <span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">payment</span>
+                </li>
 				</ul>
 			</div><!-- .htlfndr-steps -->
 
@@ -446,16 +448,19 @@
 				</main><!-- .post .htlfndr-hotel-single-content -->
 
 				<aside id="htlfndr-right-sidebar" class="col-sm-12 col-md-4 col-lg-3 htlfndr-sidebar htlfndr-sidebar-in-right" role="complementary">
-					<p class="htlfndr-add-to-wishlist"><a href="#"><i class="fa fa-plus"></i> Add to Wishlist</a></p>
 
 					<div class="widget htlfndr-hotel-visit-card">
 						<div class="htlfndr-widget-main-content htlfndr-widget-padding">
 							<div class="htlfndr-hotel-logo">
+								{% if object.hotelimage_set.all %}
 								{% for img in object.hotelimage_set.all %}
 								{% if img.featured %}
 								<img src="http://127.0.0.1:8000/{{img.img.url}}" style="height:75px; width:105px;" alt="Hotel logo" />
 								{% endif %}
 								{% endfor %}
+								{% else %}
+								<img src="http://127.0.0.1:8000/static/media/imghotel/default.jpg" style="height:75px; width:105px;" alt="Hotel logo" />
+								{% endif %}
 							</div><!-- .htlfndr-hotel-logo -->
 							<div class="htlfndr-hotel-description">
 								<h2>{{ object.title }}</h2>
@@ -499,12 +504,12 @@
 
 
 						</div><!-- .htlfndr-widget-main-content -->
-						<a href="payment.html" class="htlfndr-book-now-button" role="button">book now</a>
+						<a href="{{ object.get_add_booking_url }}" class="htlfndr-book-now-button" role="button">book now</a>
 						<div class="htlfndr-widget-padding">
 							<div class="htlfndr-hotel-contacts">
-								<p class="htlfndr-mail"><a href="mailto:example@mail.com" >example@mail.com</a></p>
-								<p class="htlfndr-url"><a href="#">example.com</a></p>
-								<p class="htlfndr-phone"><a href="#">000-000-000-000</a></p>
+								<p class="htlfndr-mail"><a href="mailto:example@mail.com" >{{ object.email }}</a></p>
+								<p class="htlfndr-url"><a href="#">{{object.slug}}.com</a></p>
+								<p class="htlfndr-phone"><a href="#">{{ object.phone }}</a></p>
 								<p class="htlfndr-reviews">123 (Reviews)</p>
 							</div><!-- .htlfndr-hotel-contacts -->
 						</div><!-- .htlfndr-widget-padding -->

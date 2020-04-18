@@ -20,7 +20,10 @@
                     <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">hotel</span>
                 </li>
                 <li>
-                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">payment</span>
+                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">book details</span>
+                </li>
+                <li>
+                    <span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">payment</span>
                 </li>
             </ul>
         </div><!-- .htlfndr-steps -->
@@ -93,10 +96,14 @@
                         {% for img in hotel.hotelimage_set.all %}
                         {% if img.featured %}
                             <a class="htlfndr-hotel-thumbnail" href="{{ hotel.get_absolute_url }}">
-                                <img alt="pic" src=" {{ img.img.url }}" style="height:155px; width:360px"/>
+                                <img alt="pic" src="{{img.img.url}}" style="height:155px; width:360px"/>
                             </a>
                         {% endif %}
                         {% endfor %}
+                        {% else %}
+                            <a class="htlfndr-hotel-thumbnail" href="{{ hotel.get_absolute_url }}">
+                                <img alt="default" src="http://127.0.0.1:8000/static/media/imghotel/default.jpg" style="height:155px; width:360px"/>
+                            </a>
                         {% endif %}
                             <div class="htlfndr-hotel-description">
                                 <div class="htlfndr-description-content">
