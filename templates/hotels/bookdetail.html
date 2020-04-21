@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} <title>book detail</title> {% endblock title %}
 
 {% block content %}
@@ -73,7 +73,7 @@
                                 {% if object.hotelimage_set.all %}
                                 {% for img in object.hotelimage_set.all %}
                                 {% if img.featured %}
-                                <img alt="Hotel logo" src="http://127.0.0.1:8000/{{img.img.url}}"
+                                <img alt="Hotel logo" src="{% static '{{img.img.url}}' %}"
                                      style="height:150px; width:300px;"/>
                                 {% endif %}
                                 {% endfor %}

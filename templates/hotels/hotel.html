@@ -43,19 +43,31 @@
 						<div id="htlfndr-gallery-tab-1" class="htlfndr-hotel-gallery">
 
 							<div id="htlfndr-gallery-synced-1" class="htlfndr-gallery-carousel">
-								{% for img in object.hotelimage_set.all%}
+								{% if object.hotelimage_set.all %}
+								{% for img in object.hotelimage_set.all %}
 								<div class="htlfndr-gallery-item">
 									<img src="http://127.0.0.1:8000/{{img.img.url}}" style="height:565px; witdh:845px;" alt="hotel img"/>
 								</div><!-- .htlfndr-gallery-item -->
 								{% endfor %}
+								{% else %}
+								<div class="htlfndr-gallery-item">
+									<img src="{% static '/media/imghotel/default.jpg' %}" style="height:565px; witdh:845px;" alt="hotel img"/>
+								</div><!-- .htlfndr-gallery-item -->
+								{% endif %}
 							</div><!-- .htlfndr-gallery-synced-1 .htlfndr-hotel-gallery-->
 
 							<div id="htlfndr-gallery-synced-2" class="htlfndr-gallery-carousel">
+								{% if object.hotelimage_set.all %}
 								{% for img in object.hotelimage_set.all%}
 								<div class="htlfndr-gallery-item">
 									<img src="http://127.0.0.1:8000/{{img.img.url}}" style="height:95px; witdh:140px;" alt="hotel img"/>
 								</div><!-- .htlfndr-gallery-item -->
 								{% endfor %}
+								{% else %}
+								<div class="htlfndr-gallery-item">
+									<img src="{% static 'media/imghotel/default.jpg' %}" style="height:95px; witdh:140px;" alt="hotel img"/>
+								</div><!-- .htlfndr-gallery-item -->
+								{% endif %}
 							</div><!-- .htlfndr-gallery-synced-2 .htlfndr-hotel-gallery-->
 						</div><!-- #htlfndr-gallery-tab-1 .htlfndr-hotel-gallery -->
 						<!-- End of hotel slider -->
@@ -459,7 +471,7 @@
 								{% endif %}
 								{% endfor %}
 								{% else %}
-								<img src="http://127.0.0.1:8000/static/media/imghotel/default.jpg" style="height:75px; width:105px;" alt="Hotel logo" />
+								<img src="{% static 'media/imghotel/default.jpg' %}" style="height:75px; width:105px;" alt="Hotel logo" />
 								{% endif %}
 							</div><!-- .htlfndr-hotel-logo -->
 							<div class="htlfndr-hotel-description">
