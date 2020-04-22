@@ -25,7 +25,7 @@ SECRET_KEY = '&*^2up3456pq*jf+bs@p3rp+@(2d(zk%%&e!beyyn2%w=#wm&('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'hoteltp1029.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'hoteltp1029.herokuapp.com']
 
 
 # Application definition
@@ -131,11 +131,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
-
+MEDIA_ROOT = [
+    os.path.join(BASE_DIR, 'static/images')
+]
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
